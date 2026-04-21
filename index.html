@@ -157,6 +157,7 @@ code{background:#f3f4f6;padding:1px 6px;border-radius:3px;font-family:'Consolas'
     <a href="#metrics" data-en="Key Metrics" data-id="Metrik Kunci">Key Metrics</a>
     <a href="#tables" data-en="Tables" data-id="Tabel">Tables</a>
     <a href="#why-adaptive" style="background:#e65100;color:#fff" data-en="Why Adaptive?" data-id="Kenapa Adaptif?">Why Adaptive?</a>
+    <a href="#benchmark" style="background:#2e7d32;color:#fff" data-en="SOTA Benchmark" data-id="Benchmark SOTA">SOTA Benchmark</a>
     <a href="manuscript.html" style="background:#1A5B8C;color:#fff" target="_blank" data-en="📄 Full Manuscript ↗" data-id="📄 Manuskrip Lengkap ↗">📄 Full Manuscript ↗</a>
     <a href="#provenance" data-en="Data Provenance" data-id="Provenance Data">Data Provenance</a>
     <a href="#pending" data-en="Pending Export" data-id="Menunggu Ekspor">Pending Export</a>
@@ -425,6 +426,285 @@ code{background:#f3f4f6;padding:1px 6px;border-radius:3px;font-family:'Consolas'
 
 <p style="font-size:12px;color:#666;margin-top:14px" data-en="Full formal argument with citations in <code>manuscript_IEEE_Access.md §VI.B</code> (lines 553–606), organized into five sub-topics: B.1 Two Objectives · B.2 Composite R² Pitfall · B.3 Class-Stratified Evidence · B.4 Architectural Capabilities · B.5 Synthesis."
    data-id="Argumen formal lengkap dengan sitasi di <code>manuscript_IEEE_Access.md §VI.B</code> (baris 553–606), diorganisasi menjadi lima sub-topik: B.1 Dua Tujuan · B.2 Jebakan R² Komposit · B.3 Bukti Class-Stratified · B.4 Kapabilitas Arsitektural · B.5 Sintesis."></p>
+
+</section>
+
+<!-- SOTA Benchmark -->
+<section id="benchmark" style="background:linear-gradient(to bottom,#e8f5e9 0%,#fff 100%);padding:20px 24px;border-radius:10px;border:1px solid #c8e6c9;margin:30px 0">
+<h2 style="color:var(--green);border-bottom-color:var(--green)" data-en="SOTA Benchmark — Head-to-Head vs Published EEWS Methods"
+    data-id="Benchmark SOTA — Head-to-Head vs Metode EEWS yang Dipublikasi">
+  SOTA Benchmark — Head-to-Head vs Published EEWS Methods
+</h2>
+
+<p data-en="Direct comparison of IDA-PTW against <b>8 state-of-the-art EEWS methods</b> from the recent literature. Columns are grouped by evaluation criteria; ✓/✗/⚠️ markers quantify each method's coverage. IDA-PTW's unique niche is highlighted at the bottom of the table."
+   data-id="Perbandingan langsung IDA-PTW terhadap <b>8 metode EEWS state-of-the-art</b> dari literatur terbaru. Kolom dikelompokkan berdasarkan kriteria evaluasi; penanda ✓/✗/⚠️ mengkuantifikasi cakupan tiap metode. Niche unik IDA-PTW di-highlight di baris terakhir tabel."></p>
+
+<h3 style="color:var(--green);margin-top:14px" data-en="Comparison matrix across 12 evaluation dimensions"
+    data-id="Matriks perbandingan di 12 dimensi evaluasi">Comparison matrix across 12 evaluation dimensions</h3>
+
+<div class="tbl-scroll" style="margin:12px 0">
+<table style="font-size:11.5px">
+  <tr style="background:var(--green)">
+    <th style="text-align:left;min-width:140px">Study / Ref</th>
+    <th>Region</th>
+    <th>Method</th>
+    <th>N traces</th>
+    <th>M range</th>
+    <th>Window</th>
+    <th>Periods</th>
+    <th>Best R²</th>
+    <th>σ</th>
+    <th>Sub-sec<br>alert</th>
+    <th>Autonomous<br>(no cat.)</th>
+    <th>Multi-<br>station</th>
+    <th>Saturation-<br>aware</th>
+    <th>M≥7<br>tested</th>
+  </tr>
+  <tr>
+    <td class="left"><b>Wu &amp; Kanamori 2008</b> [23]</td>
+    <td>Taiwan</td>
+    <td>P<sub>d</sub> threshold</td>
+    <td>~1k</td>
+    <td>4–7</td>
+    <td>3 s</td>
+    <td>PGA only</td>
+    <td>—</td>
+    <td>—</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td class="left"><b>Colombelli et al. 2015</b> [29]</td>
+    <td>Japan (K-NET)</td>
+    <td>Peak amplitude<br>+ cumul. integrals</td>
+    <td>~8k</td>
+    <td>4–7.3</td>
+    <td>3–15 s</td>
+    <td>PGA</td>
+    <td>—</td>
+    <td>—</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✓ (partial)</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td class="left"><b>Hoshiba &amp; Aoki 2015</b> [84]</td>
+    <td>Japan</td>
+    <td>PLUM<br>(data assim.)</td>
+    <td>—</td>
+    <td>—</td>
+    <td>Real-time</td>
+    <td>PGV spatial</td>
+    <td>—</td>
+    <td>—</td>
+    <td>❌</td>
+    <td>✓ (network)</td>
+    <td>✓</td>
+    <td>—</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td class="left"><b>Jozinović et al. 2020</b> [31]</td>
+    <td>Italy (INGV)</td>
+    <td>Multi-station CNN</td>
+    <td>~5k</td>
+    <td>3.5–6.5</td>
+    <td>10 s</td>
+    <td>PGA/PGV</td>
+    <td>~0.75</td>
+    <td>—</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✓</td>
+    <td>❌</td>
+    <td>❌</td>
+  </tr>
+  <tr>
+    <td class="left"><b>Münchmeyer et al. 2021</b> [77]<br><small>TEAM</small></td>
+    <td>Italy</td>
+    <td>Transformer DL</td>
+    <td>~15k</td>
+    <td>3–7.5</td>
+    <td>10 s</td>
+    <td>PGA/PGV/MMI</td>
+    <td>~0.80</td>
+    <td>—</td>
+    <td>❌</td>
+    <td>⚠️ (partial)</td>
+    <td>✓</td>
+    <td>❌</td>
+    <td>✓ (partial)</td>
+  </tr>
+  <tr>
+    <td class="left"><b>Fayaz &amp; Galasso 2022</b> [32]<br><small>ROSERS</small></td>
+    <td>NGA-West2</td>
+    <td>Deep NN</td>
+    <td>~21k</td>
+    <td>4–7.9</td>
+    <td>3 s</td>
+    <td>5 periods</td>
+    <td>>0.85</td>
+    <td>—</td>
+    <td>❌</td>
+    <td>❌ (cat. dist)</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td class="left"><b>Dai et al. 2024</b> [35]</td>
+    <td>Japan (K-NET)</td>
+    <td>XGBoost<br>11 features</td>
+    <td>~8k</td>
+    <td>4–7.4</td>
+    <td>1–10 s</td>
+    <td>~10 periods</td>
+    <td>&gt;0.84</td>
+    <td>—</td>
+    <td>❌</td>
+    <td>❌ (cat. dist)</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td class="left"><b>Shokrgozar &amp; Chen 2025</b> [33]</td>
+    <td>NGA-West2</td>
+    <td>GradCAM<br>Explainable DL</td>
+    <td>~17.5k</td>
+    <td>4–7.9</td>
+    <td>3 s</td>
+    <td><b>111 periods</b></td>
+    <td>UHS-valid</td>
+    <td>—</td>
+    <td>❌</td>
+    <td>❌ (cat. dist)</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td class="left"><b>Lin &amp; Wu 2024</b> [85]<br><small>P-alert Hualien</small></td>
+    <td>Taiwan</td>
+    <td>CAA cumul.</td>
+    <td>Event-based</td>
+    <td>Mw 7.4</td>
+    <td>15 s</td>
+    <td>Mag.</td>
+    <td>—</td>
+    <td>—</td>
+    <td>❌</td>
+    <td>⚠️</td>
+    <td>✓</td>
+    <td>✓</td>
+    <td>✓ (failed)</td>
+  </tr>
+  <tr class="hl" style="background:#fff3e0">
+    <td class="left" style="background:#2e7d32;color:#fff"><b>IDA-PTW (this)</b> [—]</td>
+    <td><b>Java-Sunda<br>subduction</b></td>
+    <td><b>4-stage<br>XGBoost</b></td>
+    <td><b>25,058</b></td>
+    <td>1.7–6.2</td>
+    <td><b>0.5–8 s<br>adaptive</b></td>
+    <td><b>103 periods</b></td>
+    <td><b>0.840<br>(anchor)</b></td>
+    <td><b>0.755</b></td>
+    <td style="background:#c8e6c9"><b>✅ 0.5 s<br>(AUC 0.988)</b></td>
+    <td style="background:#c8e6c9"><b>✅ Stage 1.5<br>99.87% fid.</b></td>
+    <td style="background:#ffebee"><b>❌ (future<br>via MQTT)</b></td>
+    <td style="background:#c8e6c9"><b>✅ Feature<br>Dichotomy 5×</b></td>
+    <td style="background:#ffebee"><b>❌ (dataset<br>M≤6.2)</b></td>
+  </tr>
+</table>
+</div>
+
+<h3 style="color:var(--green);margin-top:22px" data-en="Where IDA-PTW wins vs competitors (niche analysis)"
+    data-id="Di Mana IDA-PTW Unggul vs Kompetitor (analisis niche)">Where IDA-PTW wins vs competitors (niche analysis)</h3>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:14px 0">
+
+  <div style="background:#fff;border-left:4px solid var(--green);padding:14px 16px;border-radius:0 8px 8px 0;box-shadow:var(--card-shadow)">
+    <div style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:4px">WIN #1</div>
+    <h4 style="margin-top:0" data-en="Only method with sub-second alert" data-id="Satu-satunya metode dengan alert sub-detik">Only method with sub-second alert</h4>
+    <p style="font-size:13px;margin-top:6px" data-en="Stage 0 URPD at 0.5 s (AUC 0.988) is absent in all 8 competitors. They all require ≥3-s minimum window. This makes IDA-PTW the only published framework with near-field (Δ &lt; 38 km) protection capability."
+       data-id="Stage 0 URPD pada 0,5 s (AUC 0,988) absen di 8 kompetitor. Semua memerlukan window minimum ≥3-s. Ini membuat IDA-PTW satu-satunya framework yang dipublikasi dengan kapabilitas perlindungan near-field (Δ &lt; 38 km)."></p>
+  </div>
+
+  <div style="background:#fff;border-left:4px solid var(--green);padding:14px 16px;border-radius:0 8px 8px 0;box-shadow:var(--card-shadow)">
+    <div style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:4px">WIN #2</div>
+    <h4 style="margin-top:0" data-en="Only catalog-independent spectral prediction" data-id="Satu-satunya prediksi spektral independen-katalog">Only catalog-independent spectral prediction</h4>
+    <p style="font-size:13px;margin-top:6px" data-en="ROSERS, Dai et al., Shokrgozar all require catalog distance as input — incompatible with 10-s EEWS latency budget. TEAM is partially catalog-free at network level only. <b>IDA-PTW's Stage 1.5 (99.87% routing fidelity) is the first single-station autonomous approach.</b>"
+       data-id="ROSERS, Dai dkk., Shokrgozar semua memerlukan jarak katalog sebagai input — tidak kompatibel dengan budget latensi EEWS 10-s. TEAM parsial catalog-free hanya di level jaringan. <b>Stage 1.5 IDA-PTW (99,87% fidelitas routing) adalah pendekatan otonom single-station pertama.</b>"></p>
+  </div>
+
+  <div style="background:#fff;border-left:4px solid var(--green);padding:14px 16px;border-radius:0 8px 8px 0;box-shadow:var(--card-shadow)">
+    <div style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:4px">WIN #3</div>
+    <h4 style="margin-top:0" data-en="Only saturation-aware algorithmic design" data-id="Satu-satunya desain algoritmik sadar-saturasi">Only saturation-aware algorithmic design</h4>
+    <p style="font-size:13px;margin-top:6px" data-en="Colombelli acknowledges saturation empirically; others ignore it. <b>Only IDA-PTW formalizes the Feature Dichotomy</b> as a concrete algorithmic mechanism (5× weight reduction for saturating features in Stage 2). This provides structural robustness for future M≥7 scenarios."
+       data-id="Colombelli mengakui saturasi secara empiris; yang lain mengabaikan. <b>Hanya IDA-PTW yang memformalkan Feature Dichotomy</b> sebagai mekanisme algoritmik konkret (reduksi bobot 5× untuk fitur saturating di Stage 2). Ini memberikan ketahanan struktural untuk skenario M≥7 masa depan."></p>
+  </div>
+
+  <div style="background:#fff;border-left:4px solid var(--green);padding:14px 16px;border-radius:0 8px 8px 0;box-shadow:var(--card-shadow)">
+    <div style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:4px">WIN #4</div>
+    <h4 style="margin-top:0" data-en="Most spectral periods for subduction zone" data-id="Periode spektral terbanyak untuk zona subduksi">Most spectral periods for subduction zone</h4>
+    <p style="font-size:13px;margin-top:6px" data-en="Only Shokrgozar &amp; Chen 2025 exceeds IDA-PTW's 103 periods (111), but their dataset is NGA-West2 crustal — not transferable to Indonesian subduction. <b>IDA-PTW is the first 100+ period spectral predictor validated on subduction data.</b>"
+       data-id="Hanya Shokrgozar &amp; Chen 2025 yang melebihi 103 periode IDA-PTW (111), tetapi dataset mereka NGA-West2 crustal — tidak transferable ke subduksi Indonesia. <b>IDA-PTW adalah prediktor spektral 100+ periode pertama yang divalidasi pada data subduksi.</b>"></p>
+  </div>
+
+  <div style="background:#fff;border-left:4px solid var(--green);padding:14px 16px;border-radius:0 8px 8px 0;box-shadow:var(--card-shadow)">
+    <div style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:4px">WIN #5</div>
+    <h4 style="margin-top:0" data-en="First EEWS with formal sigma decomposition" data-id="EEWS pertama dengan dekomposisi sigma formal">First EEWS with formal sigma decomposition</h4>
+    <p style="font-size:13px;margin-top:6px" data-en="No prior EEWS method reports Al Atik et al. [44] inter-/intra-event decomposition. Khosravikia &amp; Clayton [38] applied it for Oklahoma crustal ML; <b>IDA-PTW is the first with τ/φ/σ<sub>total</sub> for any subduction EEWS</b> (τ=0.458, φ=0.598, σ=0.755)."
+       data-id="Tidak ada metode EEWS sebelumnya yang melaporkan dekomposisi inter-/intra-event Al Atik dkk. [44]. Khosravikia &amp; Clayton [38] menerapkannya untuk ML crustal Oklahoma; <b>IDA-PTW adalah yang pertama dengan τ/φ/σ<sub>total</sub> untuk EEWS subduksi apa pun</b> (τ=0,458, φ=0,598, σ=0,755)."></p>
+  </div>
+
+  <div style="background:#fff;border-left:4px solid var(--green);padding:14px 16px;border-radius:0 8px 8px 0;box-shadow:var(--card-shadow)">
+    <div style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:4px">WIN #6</div>
+    <h4 style="margin-top:0" data-en="Largest Indonesian subduction dataset for EEWS ML" data-id="Dataset subduksi Indonesia terbesar untuk ML EEWS">Largest Indonesian subduction dataset for EEWS ML</h4>
+    <p style="font-size:13px;margin-top:6px" data-en="25,058 traces from 338 Java-Sunda events is the largest public Indonesian EEWS dataset ever used. Compare: Dai et al. 8k (K-NET), Fayaz 21k (NGA-West2), TEAM 15k (Italy). <b>IDA-PTW is region-specific evidence for the Indo-Pacific seismic belt.</b>"
+       data-id="25.058 trace dari 338 event Java-Sunda adalah dataset EEWS Indonesia publik terbesar yang pernah digunakan. Bandingkan: Dai dkk. 8k (K-NET), Fayaz 21k (NGA-West2), TEAM 15k (Italy). <b>IDA-PTW adalah bukti regional-spesifik untuk sabuk seismik Indo-Pasifik.</b>"></p>
+  </div>
+
+</div>
+
+<h3 style="color:var(--green);margin-top:22px" data-en="Where competitors win (honest limitations)"
+    data-id="Di Mana Kompetitor Unggul (batasan jujur)">Where competitors win (honest limitations)</h3>
+
+<div style="background:#fff8e1;border-left:4px solid var(--orange);padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0;font-size:13.5px">
+  <p data-en="Scientific integrity requires acknowledging where competitors outperform IDA-PTW:"
+     data-id="Integritas ilmiah mensyaratkan mengakui di mana kompetitor mengungguli IDA-PTW:"></p>
+  <ul style="margin-top:6px">
+    <li data-en="<b>Multi-station fusion:</b> Jozinović et al. [31], TEAM [77], and Hoshiba &amp; Aoki [84] all support multi-station operation. IDA-PTW is currently single-station (future work via MQTT — see §VI.H item #4)."
+        data-id="<b>Fusion multi-stasiun:</b> Jozinović dkk. [31], TEAM [77], dan Hoshiba &amp; Aoki [84] semua mendukung operasi multi-stasiun. IDA-PTW saat ini single-station (future work via MQTT — lihat §VI.H item #4)."></li>
+    <li data-en="<b>M≥7 empirical validation:</b> Colombelli [29], ROSERS [32], Dai et al. [35] have M&gt;7 events in their datasets. IDA-PTW dataset caps at M_w 6.2 (no M≥7 Java-Sunda events in 2008–2024). Performance for great ruptures is extrapolation."
+        data-id="<b>Validasi empiris M≥7:</b> Colombelli [29], ROSERS [32], Dai dkk. [35] memiliki event M&gt;7 di dataset mereka. Dataset IDA-PTW dibatasi pada M_w 6,2 (tidak ada event M≥7 Java-Sunda di 2008–2024). Performa untuk rupture besar adalah ekstrapolasi."></li>
+    <li data-en="<b>Uncertainty quantification (UQ):</b> TEAM [77] provides superior Bayesian UQ. IDA-PTW reports σ but not full predictive distributions. Future work: XGBoost quantile regression (§VI.H item #3)."
+        data-id="<b>Kuantifikasi ketidakpastian (UQ):</b> TEAM [77] memberikan UQ Bayesian superior. IDA-PTW melaporkan σ tetapi bukan distribusi prediktif penuh. Future work: regresi quantile XGBoost (§VI.H item #3)."></li>
+    <li data-en="<b>Real-time data assimilation:</b> Hoshiba &amp; Aoki [84] PLUM approach does not rely on ML at all — purely physics-based. Their long-period accuracy is superior at 5–10× higher computational cost."
+        data-id="<b>Asimilasi data real-time:</b> Pendekatan PLUM Hoshiba &amp; Aoki [84] sama sekali tidak bergantung pada ML — murni berbasis fisika. Akurasi periode-panjang mereka superior dengan biaya komputasi 5–10× lebih tinggi."></li>
+  </ul>
+</div>
+
+<h3 style="color:var(--green);margin-top:22px" data-en="IDA-PTW's Unique Niche — Summary"
+    data-id="Niche Unik IDA-PTW — Ringkasan">IDA-PTW's Unique Niche — Summary</h3>
+
+<div style="background:#1b5e20;color:#fff;padding:20px 24px;border-radius:10px;margin:14px 0;font-size:14px;line-height:1.7">
+  <p data-en="Of the 8 published EEWS methods surveyed, <b>none simultaneously addresses all four challenges</b>: saturation-aware prediction, sub-second near-field alert, catalog-independent autonomous operation, and full-spectrum 103-period Sa(T)."
+     data-id="Dari 8 metode EEWS dipublikasi yang disurvei, <b>tidak ada yang secara bersamaan menjawab keempat tantangan</b>: prediksi sadar-saturasi, alert near-field sub-detik, operasi otonom independen-katalog, dan Sa(T) 103 periode penuh."></p>
+  <p data-en="<b>IDA-PTW occupies a uniquely unoccupied niche:</b> on-site deployable framework for Indonesian subduction with the four capabilities jointly. The trade-off is single-station limitation (no multi-station fusion yet) and M≤6.2 empirical range (extrapolation required for megathrust). Both limitations are actively addressed in ongoing work (MQTT hybrid for multi-station; transfer learning from K-NET for M≥7)."
+     data-id="<b>IDA-PTW menempati niche unik yang belum terisi:</b> framework yang dapat di-deploy on-site untuk subduksi Indonesia dengan keempat kapabilitas secara bersamaan. Trade-off-nya adalah keterbatasan single-station (belum ada fusion multi-stasiun) dan rentang empiris M≤6,2 (ekstrapolasi diperlukan untuk megathrust). Kedua batasan sedang aktif ditangani dalam kerja berkelanjutan (hybrid MQTT untuk multi-stasiun; transfer learning dari K-NET untuk M≥7)."></p>
+  <p style="background:rgba(255,255,255,0.15);padding:12px 16px;border-radius:6px;margin-top:10px"
+     data-en="<b>Positioning statement for IEEE Access review:</b> IDA-PTW is not claimed superior on every metric. It is the first framework to jointly solve the <i>saturation-autonomy-near-field-spectral trilemma</i> for subduction-zone EEWS, with region-specific (Indonesia) validation on the largest publicly-reported Java-Sunda dataset."
+     data-id="<b>Pernyataan posisi untuk review IEEE Access:</b> IDA-PTW tidak diklaim superior pada setiap metrik. Ini adalah framework pertama yang secara bersamaan menyelesaikan <i>trilemma saturasi-otonomi-near-field-spektral</i> untuk EEWS zona subduksi, dengan validasi regional-spesifik (Indonesia) pada dataset Java-Sunda publik terbesar yang dilaporkan."></p>
+</div>
+
+<p style="font-size:12px;color:#666;margin-top:14px" data-en="<b>Methodology:</b> Each method characterized from its original publication abstract and main results. R² values are best reported per paper (not always directly comparable due to dataset differences). ✓/✗/⚠️ based on explicit capability claims in each paper. References [22]–[85] match the manuscript numbering (<a href='data/manuscript_IEEE_Access.md'>manuscript_IEEE_Access.md</a> §I.E)."
+   data-id="<b>Metodologi:</b> Setiap metode dikarakterisasi dari abstrak dan hasil utama publikasi aslinya. Nilai R² adalah yang terbaik dilaporkan per paper (tidak selalu langsung dapat dibandingkan karena perbedaan dataset). ✓/✗/⚠️ berdasarkan klaim kapabilitas eksplisit di setiap paper. Referensi [22]–[85] cocok dengan penomoran manuskrip (<a href='data/manuscript_IEEE_Access.md'>manuscript_IEEE_Access.md</a> §I.E)."></p>
 
 </section>
 
