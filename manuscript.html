@@ -131,9 +131,9 @@ main.content mjx-container[display="true"]{margin:16px 0;font-size:105%!importan
   <main class="content">
 
     <div class="id-notice" id="idNotice">
-      <b data-en="Note:" data-id="Catatan:">Catatan:</b>
-      <span data-en="The UI chrome is bilingual, but the manuscript body is in English — the authoritative submission version for IEEE Access. Figures, tables, and equations are the same in both language modes."
-            data-id="UI halaman bilingual, tetapi badan manuskrip dalam bahasa Inggris — versi otoritatif untuk submisi ke IEEE Access. Gambar, tabel, dan persamaan sama di kedua mode bahasa."></span>
+      <b data-en="Indonesian Translation Notice:" data-id="Catatan Terjemahan Bahasa Indonesia:">Catatan Terjemahan Bahasa Indonesia:</b>
+      <span data-en="Sections translated: Abstract, I (Introduction), II (Seismotectonic Context), III (Dataset Curation). Sections IV–VII and References remain in English as the authoritative submission version. All numbers, tables, figures, and equations are identical across both language modes. The concise Indonesian summary of all 12 narrative subsections is available on the main review page."
+            data-id="Bagian yang diterjemahkan: Abstrak, I (Pendahuluan), II (Konteks Seismotektonik), III (Kurasi Dataset). Bagian IV–VII dan Daftar Pustaka tetap dalam bahasa Inggris sebagai versi otoritatif untuk submisi. Semua angka, tabel, gambar, dan persamaan identik di kedua mode bahasa. Ringkasan bahasa Indonesia singkat dari seluruh 12 sub-section narasi tersedia di halaman review utama."></span>
     </div>
 
     <div id="loading"><span class="spin"></span>
@@ -154,6 +154,10 @@ main.content mjx-container[display="true"]{margin:16px 0;font-size:105%!importan
 <script>
 // ============ Language toggle ============
 let currentLang = 'en';
+const MANUSCRIPT_SOURCES = {
+  en: 'data/manuscript_IEEE_Access.md',
+  id: 'data/manuscript_IEEE_Access_ID.md'
+};
 function toggleLang() {
   currentLang = currentLang === 'en' ? 'id' : 'en';
   document.getElementById('langLabel').textContent = currentLang === 'en' ? 'ID' : 'EN';
@@ -163,6 +167,8 @@ function toggleLang() {
   });
   // Toggle Indonesian-mode notice
   document.getElementById('idNotice').classList.toggle('show', currentLang === 'id');
+  // Reload manuscript body in selected language
+  loadManuscript();
 }
 
 // ============ Figure metadata: which figures to embed, and where ============
@@ -214,9 +220,19 @@ const FIGURES = [
 
 // ============ Manuscript loader ============
 async function loadManuscript() {
+  // Show loading state
+  const loadEl = document.getElementById('loading');
+  const contEl = document.getElementById('manuscriptContent');
+  loadEl.style.display = 'block';
+  loadEl.innerHTML = '<span class="spin"></span> <span>' +
+    (currentLang === 'id' ? 'Memuat manuskrip...' : 'Loading manuscript...') + '</span>';
+  contEl.style.display = 'none';
+  contEl.innerHTML = '';
+
   try {
-    const response = await fetch('data/manuscript_IEEE_Access.md');
-    if (!response.ok) throw new Error('Failed to fetch manuscript');
+    const source = MANUSCRIPT_SOURCES[currentLang] || MANUSCRIPT_SOURCES.en;
+    const response = await fetch(source);
+    if (!response.ok) throw new Error('Failed to fetch manuscript: ' + source);
     let md = await response.text();
 
     // Configure marked
