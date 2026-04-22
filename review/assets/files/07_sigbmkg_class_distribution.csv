@@ -1,0 +1,7 @@
+SIG-BMKG Level,PGA range (gal),MMI,N,Pct
+I (Not felt),PGA < 2.9,I–II,25055,99.99%
+II (Felt),2.9 ≤ PGA < 89,III–V,3,0.01%
+III (Slight dmg),89 ≤ PGA < 168,VI,0,0.00%
+IV (Moderate dmg),168 ≤ PGA < 565,VII–VIII,0,0.00%
+V (Heavy dmg),PGA ≥ 565,IX–XII,0,0.00%
+TOTAL,—,—,25058,100.00%
