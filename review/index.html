@@ -6,6 +6,21 @@
 <title>IDA-PTW EEWS Review — Dashboard</title>
 <meta name="description" content="Validation evidence, CSV cross-check, manuscript audit, and publication figure for the IDA-PTW EEWS pipeline (Java-Sunda Trench).">
 <link rel="stylesheet" href="assets/css/style.css">
+<script>
+// FOUC prevention — apply language class to <html> BEFORE body renders
+(function(){
+  try{
+    var urlLang = new URLSearchParams(window.location.search).get('lang');
+    var stored  = localStorage.getItem('eews_review_lang');
+    var browserID = (navigator.language||'').toLowerCase().startsWith('id');
+    var lang = (urlLang==='en'||urlLang==='id') ? urlLang
+             : (stored==='en'||stored==='id') ? stored
+             : (browserID ? 'id' : 'en');
+    document.documentElement.classList.add('lang-'+lang);
+    document.documentElement.lang = lang;
+  }catch(e){document.documentElement.classList.add('lang-en');}
+})();
+</script>
 </head>
 <body class="lang-en">
 

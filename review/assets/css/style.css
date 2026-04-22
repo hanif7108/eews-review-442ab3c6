@@ -56,13 +56,32 @@ body{
 .lang-toggle{
   display:inline-flex; border:1px solid var(--c-line); border-radius:7px;
   background:var(--c-bg); margin-left:8px; overflow:hidden;
+  box-shadow:0 1px 2px rgba(0,0,0,0.04);
 }
 .lang-toggle button{
-  border:0; background:transparent; padding:6px 12px; font-size:12.5px;
-  font-weight:600; color:var(--c-muted); cursor:pointer; min-width:42px;
-  font-family:inherit;
+  border:0; background:transparent; padding:6px 14px; font-size:12.5px;
+  font-weight:700; color:var(--c-muted); cursor:pointer; min-width:46px;
+  font-family:inherit; transition:background .18s, color .18s, transform .12s;
+  letter-spacing:0.4px;
 }
-.lang-toggle button.active{background:var(--c-accent); color:#fff}
+.lang-toggle button:hover:not(.active){
+  background:var(--c-line-soft); color:var(--c-accent);
+}
+.lang-toggle button.active{
+  background:var(--c-accent); color:#fff;
+  box-shadow:inset 0 -2px 0 rgba(0,0,0,0.15);
+}
+.lang-toggle button.flash{
+  animation:langFlash 0.28s ease-out;
+}
+@keyframes langFlash{
+  0%  {transform:scale(1);}
+  45% {transform:scale(1.12); background:var(--c-accent-2);}
+  100%{transform:scale(1);}
+}
+.lang-toggle button:focus-visible{
+  outline:2px solid var(--c-accent-2); outline-offset:1px;
+}
 
 /* ==== Hero ==== */
 .hero{
@@ -201,9 +220,11 @@ footer.site{
 }
 footer.site a{color:var(--c-muted)}
 
-/* ==== i18n: show/hide by language ==== */
-body.lang-en [data-lang="id"]{display:none}
-body.lang-id [data-lang="en"]{display:none}
+/* ==== i18n: show/hide by language (FOUC-safe: responds to html OR body class) ==== */
+html.lang-en [data-lang="id"],
+body.lang-en [data-lang="id"]{display:none !important}
+html.lang-id [data-lang="en"],
+body.lang-id [data-lang="en"]{display:none !important}
 
 /* ==== Utility ==== */
 .mono{font-family:"SF Mono", Menlo, Consolas, monospace; font-size:0.92em}
