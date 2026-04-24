@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IDA-PTW EEWS — Final Results (Task 15)</title>
+<meta name="description" content="Final operational framework results: composite R² = 0.7091, Stage-1 ensemble 79.64% accuracy / 81.68% balanced, oracle upper bound 0.7779.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="lang-en">
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <div class="brand-mark">IDA</div>
+      <div class="brand-text">
+        <b data-lang="en">IDA-PTW EEWS Review</b>
+        <b data-lang="id">Tinjauan IDA-PTW EEWS</b>
+        <span data-lang="en">Java-Sunda · Task 15 Final</span>
+        <span data-lang="id">Jawa-Sunda · Task 15 Final</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" data-lang="en">Dashboard</a>
+      <a href="index.html" data-lang="id">Beranda</a>
+      <a href="07-final-results.html" class="active" data-lang="en">Final Results</a>
+      <a href="07-final-results.html" class="active" data-lang="id">Hasil Akhir</a>
+      <a href="01-crosscheck.html" data-lang="en">Cross-check</a>
+      <a href="01-crosscheck.html" data-lang="id">Cross-check</a>
+      <a href="02-audit.html" data-lang="en">Audit</a>
+      <a href="02-audit.html" data-lang="id">Audit</a>
+      <a href="03-appendix.html" data-lang="en">Appendix</a>
+      <a href="03-appendix.html" data-lang="id">Lampiran</a>
+      <a href="04-figure.html" data-lang="en">Figure</a>
+      <a href="04-figure.html" data-lang="id">Figur</a>
+      <a href="05-readiness.html" data-lang="en">Readiness</a>
+      <a href="05-readiness.html" data-lang="id">Kesiapan</a>
+      <a href="06-sigbmkg.html" data-lang="en">SIG-BMKG</a>
+      <a href="06-sigbmkg.html" data-lang="id">SIG-BMKG</a>
+    </nav>
+    <div class="lang-toggle" role="tablist" aria-label="Language">
+      <button data-lang="en" aria-label="English">EN</button>
+      <button data-lang="id" aria-label="Bahasa Indonesia">ID</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1 data-lang="en">IDA-PTW EEWS — Final Operational Framework (Task 15)</h1>
+    <h1 data-lang="id">IDA-PTW EEWS — Framework Operasional Final (Task 15)</h1>
+    <p class="sub" data-lang="en">
+      Consolidated final results of the 4-stage on-site EEWS framework for the Java-Sunda Trench, trained with 90 engineered features (base + site + Dai multi-window + frequency-domain), MMI-hybrid classifier ensemble, and class-conditional spectral regressor marginalised over the Stage-1 posterior.
+    </p>
+    <p class="sub" data-lang="id">
+      Konsolidasi hasil akhir framework EEWS on-site 4-stage untuk Palung Jawa-Sunda, dilatih dengan 90 fitur (base + site + Dai multi-window + frequency-domain), ensemble classifier MMI-hybrid, dan spectral regressor class-conditional yang dimarginalisasi terhadap posterior Stage-1.
+    </p>
+    <div class="meta">
+      <span>
+        <strong data-lang="en">Dataset (Stage 0)</strong><strong data-lang="id">Dataset (Stage 0)</strong>
+        <span data-lang="en">25,058 traces · 338 events</span>
+        <span data-lang="id">25.058 trace · 338 event</span>
+      </span>
+      <span>
+        <strong data-lang="en">Dataset (Stages 1-2)</strong><strong data-lang="id">Dataset (Stages 1-2)</strong>
+        <span data-lang="en">23,537 traces · 335 events</span>
+        <span data-lang="id">23.537 trace · 335 event</span>
+      </span>
+      <span>
+        <strong data-lang="en">CV</strong><strong data-lang="id">CV</strong>
+        <span data-lang="en">GroupKFold(5), event-grouped, seed 42</span>
+        <span data-lang="id">GroupKFold(5), grouped event, seed 42</span>
+      </span>
+      <span><strong data-lang="en">Date</strong><strong data-lang="id">Tanggal</strong> 2026-04-24</span>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <div class="tldr" style="border-left:6px solid #1f8a5c">
+    <b data-lang="en">TL;DR —</b>
+    <b data-lang="id">Ringkas —</b>
+    <span data-lang="en">
+      The final operational pipeline achieves <b>composite R² = 0.7091</b> across 103 spectral periods under event-grouped 5-fold CV on 23,537 Indonesian accelerograms. Stage 0 URPD delivers AUC = 0.9136 with 100% Damaging Recall in 0.5 s, shrinking the near-field blind zone from 38 km to 11 km (Balanced) / 4 km (Aggressive). Stage 1 intensity classifier achieves 79.64% overall / 81.68% balanced accuracy under an MMI-hybrid 3-class discretisation via XGBoost+LightGBM soft-voting ensemble with SMOTE and Optuna tuning. The 103-period Stage-2 spectral regressor is class-conditional, marginalised over the Stage-1 posterior; oracle upper bound (Stage-1 perfect) is R² = 0.7779. 99.44% Golden Time Compliance. Retrospective validation on Cianjur 2022 and Sumedang 2024 yields 100% Stage-0 Damaging Recall.
+    </span>
+    <span data-lang="id">
+      Pipeline operasional final mencapai <b>composite R² = 0,7091</b> pada 103 periode spektral di bawah event-grouped 5-fold CV pada 23.537 accelerogram Indonesia. Stage 0 URPD memberikan AUC = 0,9136 dengan 100% Damaging Recall dalam 0,5 s, mengurangi near-field blind zone dari 38 km ke 11 km (Balanced) / 4 km (Aggressive). Stage 1 intensity classifier mencapai 79,64% overall / 81,68% balanced accuracy dengan diskretisasi 3-kelas MMI-hybrid via ensemble soft-voting XGBoost+LightGBM dengan SMOTE dan tuning Optuna. Regressor Stage-2 pada 103 periode adalah class-conditional, dimarginalisasi terhadap posterior Stage-1; oracle upper bound (Stage-1 sempurna) adalah R² = 0,7779. 99,44% Golden Time Compliance. Validasi retrospektif pada Cianjur 2022 dan Sumedang 2024 menghasilkan 100% Damaging Recall di Stage 0.
+    </span>
+  </div>
+
+  <section class="card">
+    <h2 data-lang="en">Headline Performance (Task 15 Final)</h2>
+    <h2 data-lang="id">Performa Utama (Task 15 Final)</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-lang="en">Metric</th><th data-lang="id">Metrik</th>
+            <th class="num" data-lang="en">Value</th><th class="num" data-lang="id">Nilai</th>
+            <th data-lang="en">Context</th><th data-lang="id">Konteks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td data-lang="en">Composite R² (103 periods, marginalised)</td>
+            <td data-lang="id">Composite R² (103 periode, marginalised)</td>
+            <td class="num"><b>0.7091</b></td><td class="num"><b>0,7091</b></td>
+            <td data-lang="en">Leading operational metric</td>
+            <td data-lang="id">Metrik operasional utama</td>
+          </tr>
+          <tr>
+            <td data-lang="en">R² operational band (T ≤ 2 s, 42 periods)</td>
+            <td data-lang="id">R² operational band (T ≤ 2 s, 42 periode)</td>
+            <td class="num">0.6962</td><td class="num">0,6962</td>
+            <td data-lang="en">Short-to-medium structural periods</td>
+            <td data-lang="id">Periode struktural pendek-menengah</td>
+          </tr>
+          <tr>
+            <td data-lang="en">R² oracle upper bound (all periods)</td>
+            <td data-lang="id">R² oracle upper bound (semua periode)</td>
+            <td class="num">0.7779</td><td class="num">0,7779</td>
+            <td data-lang="en">Stage-1-perfect theoretical ceiling</td>
+            <td data-lang="id">Plafon teoritis Stage-1 sempurna</td>
+          </tr>
+          <tr>
+            <td data-lang="en">Stage-1 OOF overall accuracy</td>
+            <td data-lang="id">Akurasi overall OOF Stage-1</td>
+            <td class="num">79.64%</td><td class="num">79,64%</td>
+            <td data-lang="en">MMI-hybrid 3-class ensemble</td>
+            <td data-lang="id">Ensemble 3-kelas MMI-hybrid</td>
+          </tr>
+          <tr>
+            <td data-lang="en">Stage-1 OOF balanced accuracy</td>
+            <td data-lang="id">Balanced accuracy OOF Stage-1</td>
+            <td class="num"><b>81.68%</b></td><td class="num"><b>81,68%</b></td>
+            <td data-lang="en">Safety-relevant (minority Damaging)</td>
+            <td data-lang="id">Relevan keselamatan (minoritas Damaging)</td>
+          </tr>
+          <tr>
+            <td data-lang="en">Stage-0 URPD AUC</td>
+            <td data-lang="id">AUC URPD Stage-0</td>
+            <td class="num">0.9136</td><td class="num">0,9136</td>
+            <td data-lang="en">Near-field sub-second discriminator</td>
+            <td data-lang="id">Diskriminator sub-detik near-field</td>
+          </tr>
+          <tr>
+            <td data-lang="en">Blind zone reduction (Balanced)</td>
+            <td data-lang="id">Reduksi blind zone (Balanced)</td>
+            <td class="num">38 → 11 km</td><td class="num">38 → 11 km</td>
+            <td data-lang="en">−71% with 100% Damaging Recall</td>
+            <td data-lang="id">−71% dengan 100% Damaging Recall</td>
+          </tr>
+          <tr>
+            <td data-lang="en">Blind zone reduction (Aggressive)</td>
+            <td data-lang="id">Reduksi blind zone (Aggressive)</td>
+            <td class="num">38 → 4 km</td><td class="num">38 → 4 km</td>
+            <td data-lang="en">−89% with FAR = 5%</td>
+            <td data-lang="id">−89% dengan FAR = 5%</td>
+          </tr>
+          <tr>
+            <td data-lang="en">Golden Time Compliance</td>
+            <td data-lang="id">Golden Time Compliance</td>
+            <td class="num">99.44%</td><td class="num">99,44%</td>
+            <td data-lang="en">Traces with latency budget ≤ P-S</td>
+            <td data-lang="id">Trace dengan budget latensi ≤ P-S</td>
+          </tr>
+          <tr>
+            <td data-lang="en">σ_total (T = 1.0 s, Al Atik decomposition)</td>
+            <td data-lang="id">σ_total (T = 1,0 s, dekomposisi Al Atik)</td>
+            <td class="num">0.376</td><td class="num">0,376</td>
+            <td data-lang="en">τ = 0.135, φ = 0.351 (intra-event dominant)</td>
+            <td data-lang="id">τ = 0,135, φ = 0,351 (intra-event dominan)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" data-lang="en">Source: <code>reports/performance/ida_ptw_task15.json</code>. Script: <code>review_deliverables/task15_stage1_ensemble_optuna.py</code>. CV: GroupKFold(5) by event_id, random_state = 42.</p>
+    <p class="small muted" data-lang="id">Sumber: <code>reports/performance/ida_ptw_task15.json</code>. Skrip: <code>review_deliverables/task15_stage1_ensemble_optuna.py</code>. CV: GroupKFold(5) berdasarkan event_id, random_state = 42.</p>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">Pipeline Optimisation Journey</h2>
+    <h2 data-lang="id">Perjalanan Optimisasi Pipeline</h2>
+    <p data-lang="en">The composite R² = 0.7091 was reached through a staged feature-engineering programme; each addition contributed an independently measurable gain under the same GroupKFold 5-fold CV protocol.</p>
+    <p data-lang="id">Composite R² = 0,7091 dicapai melalui program feature-engineering bertahap; setiap penambahan memberikan kontribusi yang terukur di bawah protokol CV GroupKFold 5-fold yang sama.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-lang="en">Stage</th><th data-lang="id">Tahap</th>
+            <th data-lang="en">Method Added</th><th data-lang="id">Metode Ditambah</th>
+            <th class="num">M</th>
+            <th class="num">R²</th>
+            <th class="num">ΔR²</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>task 11</td><td>task 11</td>
+            <td data-lang="en">Class-conditional marginalisation (baseline)</td>
+            <td data-lang="id">Class-conditional marginalisation (baseline)</td>
+            <td class="num">34</td><td class="num">0.6074</td><td class="num">—</td>
+          </tr>
+          <tr>
+            <td>task 12</td><td>task 12</td>
+            <td data-lang="en">+ Site features (VS30, log-distance)</td>
+            <td data-lang="id">+ Fitur site (VS30, log-distance)</td>
+            <td class="num">36</td><td class="num">0.6641</td><td class="num">+0.057</td>
+          </tr>
+          <tr>
+            <td>task 14</td><td>task 14</td>
+            <td data-lang="en">+ Dai multi-window (2, 5, 10 s post-P)</td>
+            <td data-lang="id">+ Dai multi-window (2, 5, 10 s pasca-P)</td>
+            <td class="num">66</td><td class="num">0.6966</td><td class="num">+0.033</td>
+          </tr>
+          <tr class="highlight">
+            <td><b>task 15</b></td><td><b>task 15</b></td>
+            <td data-lang="en"><b>+ XGB+LGB ensemble, SMOTE, Optuna, frequency features</b></td>
+            <td data-lang="id"><b>+ ensemble XGB+LGB, SMOTE, Optuna, fitur frequency</b></td>
+            <td class="num"><b>90</b></td><td class="num"><b>0.7091</b></td><td class="num"><b>+0.013</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" data-lang="en">Total improvement: +0.102 across four feature-engineering generations. Largest single contribution: site features (+0.057). Dai continuous-time-window adapted from K-NET Japan contributes the second-largest gain (+0.033), validating cross-regional transferability with ~0.10 degradation attributable to higher Sunda-arc site-path variability.</p>
+    <p class="small muted" data-lang="id">Total peningkatan: +0,102 dalam empat generasi feature-engineering. Kontribusi tunggal terbesar: fitur site (+0,057). Continuous-time-window Dai yang diadaptasi dari K-NET Jepang memberikan kontribusi terbesar kedua (+0,033), memvalidasi transferabilitas lintas-regional dengan degradasi ~0,10 yang dapat diatribusikan ke variabilitas site-path Sunda yang lebih tinggi.</p>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">90-Feature Architecture Breakdown</h2>
+    <h2 data-lang="id">Rincian Arsitektur 90-Fitur</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-lang="en">Family</th><th data-lang="id">Keluarga</th>
+            <th class="num">M</th>
+            <th data-lang="en">Source</th><th data-lang="id">Sumber</th>
+            <th data-lang="en">Examples</th><th data-lang="id">Contoh</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-lang="en">Time-domain rosers_ptw3 (base)</td>
+            <td data-lang="id">rosers_ptw3 time-domain (dasar)</td>
+            <td class="num">34</td>
+            <td><code>rosers_features_ptw3.csv</code></td>
+            <td><code>rosers_features_ptw3.csv</code></td>
+            <td>τc, Pd, Pa, Pv, CAV, Ia, TP, dist_*</td>
+            <td>τc, Pd, Pa, Pv, CAV, Ia, TP, dist_*</td>
+          </tr>
+          <tr>
+            <td data-lang="en">Prior site metadata</td>
+            <td data-lang="id">Metadata site prior</td>
+            <td class="num">2</td>
+            <td><code>metadata_recalibrated.csv</code></td>
+            <td><code>metadata_recalibrated.csv</code></td>
+            <td>metadata_vs30, metadata_log_dist</td>
+            <td>metadata_vs30, metadata_log_dist</td>
+          </tr>
+          <tr>
+            <td data-lang="en">Dai multi-window (2, 5, 10 s post-P)</td>
+            <td data-lang="id">Dai multi-window (2, 5, 10 s pasca-P)</td>
+            <td class="num">30</td>
+            <td><code>rosers_features_multi_window.csv</code></td>
+            <td><code>rosers_features_multi_window.csv</code></td>
+            <td>Pa_w2s, Pv_w5s, Pd_w10s, Pav, Pad, Pvd</td>
+            <td>Pa_w2s, Pv_w5s, Pd_w10s, Pav, Pad, Pvd</td>
+          </tr>
+          <tr>
+            <td data-lang="en">Frequency-domain (3 s PTW, Z + H channels)</td>
+            <td data-lang="id">Frequency-domain (PTW 3 s, kanal Z + H)</td>
+            <td class="num">24</td>
+            <td><code>freq_features_ptw3.csv</code></td>
+            <td><code>freq_features_ptw3.csv</code></td>
+            <td>spectral_centroid, bandwidth, rolloff85, band_1-5Hz</td>
+            <td>spectral_centroid, bandwidth, rolloff85, band_1-5Hz</td>
+          </tr>
+          <tr class="highlight">
+            <td data-lang="en"><b>Total</b></td><td data-lang="id"><b>Total</b></td>
+            <td class="num"><b>90</b></td>
+            <td colspan="4" data-lang="en">merged on (trace_name, event_id) inner join</td>
+            <td colspan="4" data-lang="id">merged pada (trace_name, event_id) inner join</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">Four-Stage Pipeline at a Glance</h2>
+    <h2 data-lang="id">Pipeline 4-Stage Sekilas</h2>
+    <p data-lang="en">Each stage delivers a single targeted contribution. Stage outputs feed downstream; Stage 0 is independent for sub-second near-field alerts.</p>
+    <p data-lang="id">Setiap tahap memberikan satu kontribusi yang ditargetkan. Output tahap mengalir ke hilir; Stage 0 independen untuk alert near-field sub-detik.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-lang="en">Stage</th><th data-lang="id">Tahap</th>
+            <th data-lang="en">Purpose</th><th data-lang="id">Tujuan</th>
+            <th data-lang="en">Method</th><th data-lang="id">Metode</th>
+            <th data-lang="en">Key Metric</th><th data-lang="id">Metrik Kunci</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Stage 0</b> — URPD</td><td><b>Stage 0</b> — URPD</td>
+            <td data-lang="en">Near-field blind-zone discriminator (0.5 s, binary Damaging alert)</td>
+            <td data-lang="id">Diskriminator near-field blind-zone (0,5 s, alert Damaging biner)</td>
+            <td data-lang="en">Gradient Boosting, 7 features</td>
+            <td data-lang="id">Gradient Boosting, 7 fitur</td>
+            <td>AUC 0.9136</td><td>AUC 0,9136</td>
+          </tr>
+          <tr>
+            <td><b>Stage 1</b> — Intensity Gate</td><td><b>Stage 1</b> — Intensity Gate</td>
+            <td data-lang="en">3-class intensity routing (Low &lt; 2 gal, Med 2–50 gal, High ≥ 50 gal)</td>
+            <td data-lang="id">Routing intensitas 3-kelas (Low &lt; 2 gal, Med 2–50 gal, High ≥ 50 gal)</td>
+            <td data-lang="en">XGB + LGB ensemble, SMOTE, Optuna</td>
+            <td data-lang="id">Ensemble XGB + LGB, SMOTE, Optuna</td>
+            <td>Acc 79.64% / Bal 81.68%</td><td>Acc 79,64% / Bal 81,68%</td>
+          </tr>
+          <tr>
+            <td><b>Stage 1.5</b></td><td><b>Stage 1.5</b></td>
+            <td data-lang="en">Distance regression ablation (negative result)</td>
+            <td data-lang="id">Ablasi regresi jarak (hasil negatif)</td>
+            <td data-lang="en">XGBoost over 5 C0–C4 feature sets</td>
+            <td data-lang="id">XGBoost pada 5 feature set C0–C4</td>
+            <td>R² ≤ 0 (all variants)</td><td>R² ≤ 0 (semua variant)</td>
+          </tr>
+          <tr>
+            <td><b>Stage 2</b> — Spectral Regressor</td><td><b>Stage 2</b> — Spectral Regressor</td>
+            <td data-lang="en">103-period Sa prediction, marginalised over Stage-1 posterior</td>
+            <td data-lang="id">Prediksi Sa 103-periode, dimarginalisasi terhadap posterior Stage-1</td>
+            <td data-lang="en">Class-conditional XGB + LGB blend</td>
+            <td data-lang="id">XGB + LGB blend class-conditional</td>
+            <td>R² = 0.7091</td><td>R² = 0,7091</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">Authoritative Source Files</h2>
+    <h2 data-lang="id">File Sumber Otoritatif</h2>
+    <ul>
+      <li><code>review_deliverables/task15_stage1_ensemble_optuna.py</code> — <span data-lang="en">main training pipeline</span><span data-lang="id">pipeline training utama</span></li>
+      <li><code>review_deliverables/task15a_extract_freq_features.py</code> — <span data-lang="en">frequency-domain feature extractor</span><span data-lang="id">extractor fitur frequency-domain</span></li>
+      <li><code>review_deliverables/task13_extract_multiwindow_features.py</code> — <span data-lang="en">Dai multi-window feature extractor</span><span data-lang="id">extractor fitur Dai multi-window</span></li>
+      <li><code>reports/performance/ida_ptw_task15.json</code> — <span data-lang="en">summary JSON</span><span data-lang="id">ringkasan JSON</span></li>
+      <li><code>reports/performance/ida_ptw_task15.csv</code> — <span data-lang="en">103-period per-period R² results</span><span data-lang="id">hasil R² per-periode untuk 103 periode</span></li>
+      <li><code>reports/performance/ida_ptw_task15_anchors.csv</code> — <span data-lang="en">anchor periods (T = 0.303, 1.010, 3.030 s)</span><span data-lang="id">periode anchor (T = 0,303, 1,010, 3,030 s)</span></li>
+      <li><code>reports/performance/ida_ptw_task15_per_fold.csv</code> — <span data-lang="en">per-fold accuracy and R²</span><span data-lang="id">akurasi dan R² per-fold</span></li>
+      <li><code>reports/performance/ida_ptw_task15_optuna_trials.csv</code> — <span data-lang="en">Optuna hyperparameter search log</span><span data-lang="id">log pencarian hyperparameter Optuna</span></li>
+      <li><code>manuscript_draft_IEEE_v2.md</code> — <span data-lang="en">final manuscript draft, IEEE Access target</span><span data-lang="id">draft manuskrip final, target IEEE Access</span></li>
+      <li><code>IEEE_cover_letter.md</code> — <span data-lang="en">IEEE Access cover letter</span><span data-lang="id">cover letter IEEE Access</span></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">Retrospective Event Validation</h2>
+    <h2 data-lang="id">Validasi Retrospektif Event</h2>
+    <p data-lang="en">Two destructive near-field events held out from training demonstrate real-world applicability:</p>
+    <p data-lang="id">Dua event near-field destruktif yang ditahan dari training menunjukkan aplikabilitas dunia nyata:</p>
+    <ul>
+      <li><b>Cianjur 2022-11-21</b>, $M_w$ 5.6 — <span data-lang="en">100% Stage-0 Damaging Recall</span><span data-lang="id">100% Damaging Recall di Stage-0</span></li>
+      <li><b>Sumedang 2024-01-01</b>, $M_w$ 5.7 — <span data-lang="en">100% Stage-0 Damaging Recall</span><span data-lang="id">100% Damaging Recall di Stage-0</span></li>
+    </ul>
+    <p data-lang="en">Both events demonstrate that the IDA-PTW framework detects destructive near-field shaking within the Golden Time budget on events the model has never seen during training.</p>
+    <p data-lang="id">Kedua event menunjukkan bahwa framework IDA-PTW mendeteksi getaran near-field destruktif dalam budget Golden Time pada event yang belum pernah dilihat model selama training.</p>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">Submission Status</h2>
+    <h2 data-lang="id">Status Submission</h2>
+    <ul>
+      <li><span data-lang="en">Target venue:</span><span data-lang="id">Target venue:</span> <b>IEEE Access (Q1)</b></li>
+      <li><span data-lang="en">Manuscript: <code>manuscript_draft_IEEE_v2.md</code> — 924 lines, final (task 15 numbers integrated)</span><span data-lang="id">Manuskrip: <code>manuscript_draft_IEEE_v2.md</code> — 924 baris, final (angka task 15 terintegrasi)</span></li>
+      <li><span data-lang="en">Cover letter: <code>IEEE_cover_letter.md</code> — framework-first narrative</span><span data-lang="id">Cover letter: <code>IEEE_cover_letter.md</code> — narasi framework-first</span></li>
+      <li><span data-lang="en">Reproducibility bundle: <code>review_bundle.zip</code> (scripts + CSVs + feature files) — upload to Zenodo pending</span><span data-lang="id">Bundle reproducibility: <code>review_bundle.zip</code> (script + CSV + file fitur) — upload ke Zenodo pending</span></li>
+      <li><span data-lang="en">Status: ready for submission pending Zenodo DOI</span><span data-lang="id">Status: siap submit menunggu DOI Zenodo</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site">
+  <p>
+    <span data-lang="en">Prepared for the IDA-PTW EEWS dissertation / manuscript review · Universitas Indonesia &amp; BMKG · Updated 2026-04-24 with Task 15 final results</span>
+    <span data-lang="id">Disiapkan untuk tinjauan disertasi / manuskrip IDA-PTW EEWS · Universitas Indonesia &amp; BMKG · Diperbarui 24-04-2026 dengan hasil akhir Task 15</span>
+  </p>
+</footer>
+
+<script src="assets/js/i18n.js"></script>
+</body>
+</html>

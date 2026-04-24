@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manuscript Audit · IDA-PTW EEWS Review</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="lang-en">
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <div class="brand-mark">IDA</div>
+      <div class="brand-text">
+        <b data-lang="en">IDA-PTW EEWS Review</b>
+        <b data-lang="id">Tinjauan IDA-PTW EEWS</b>
+        <span data-lang="en">02 · Manuscript Audit</span>
+        <span data-lang="id">02 · Audit Manuskrip</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" data-lang="en">Dashboard</a>
+      <a href="index.html" data-lang="id">Beranda</a>
+      <a href="07-final-results.html" data-lang="en">Final Results</a>
+      <a href="07-final-results.html" data-lang="id">Hasil Akhir</a>
+      <a href="01-crosscheck.html" data-lang="en">Cross-check</a>
+      <a href="01-crosscheck.html" data-lang="id">Cross-check</a>
+      <a href="02-audit.html" class="active" data-lang="en">Manuscript Audit</a>
+      <a href="02-audit.html" class="active" data-lang="id">Audit Manuskrip</a>
+      <a href="03-appendix.html" data-lang="en">Appendix A–D</a>
+      <a href="03-appendix.html" data-lang="id">Lampiran A–D</a>
+      <a href="04-figure.html" data-lang="en">Figure</a>
+      <a href="04-figure.html" data-lang="id">Figur</a>
+      <a href="05-readiness.html" data-lang="en">Readiness</a>
+      <a href="05-readiness.html" data-lang="id">Kesiapan</a>
+      <a href="06-sigbmkg.html" data-lang="en">SIG-BMKG</a>
+      <a href="06-sigbmkg.html" data-lang="id">SIG-BMKG</a>
+    </nav>
+    <div class="lang-toggle">
+      <button data-lang="en">EN</button>
+      <button data-lang="id">ID</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1 data-lang="en">Manuscript Audit Report</h1>
+    <h1 data-lang="id">Laporan Audit Manuskrip</h1>
+    <p class="sub" data-lang="en">Every numeric claim in <code>manuscript_draft_IEEE.md</code> cross-referenced against the authoritative CSVs — with severity-graded issue list and priority fix ordering.</p>
+    <p class="sub" data-lang="id">Setiap klaim numerik di <code>manuscript_draft_IEEE.md</code> di-cross-check terhadap CSV otoritatif — dengan daftar isu berperingkat tingkat keparahan dan urutan prioritas perbaikan.</p>
+    <div class="meta">
+      <span>
+        <strong data-lang="en">Manuscript</strong><strong data-lang="id">Manuskrip</strong>
+        <span data-lang="en">764 lines · 89 refs</span>
+        <span data-lang="id">764 baris · 89 referensi</span>
+      </span>
+      <span><strong data-lang="en">Last edit</strong><strong data-lang="id">Suntingan terakhir</strong> 2026-04-19</span>
+      <span><strong data-lang="en">Audit date</strong><strong data-lang="id">Tanggal audit</strong> 2026-04-22</span>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <section class="card">
+    <h2 data-lang="en">Issue Summary</h2>
+    <h2 data-lang="id">Ringkasan Isu</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-lang="en">Severity</th><th data-lang="id">Tingkat</th>
+            <th class="num" data-lang="en">Count</th><th class="num" data-lang="id">Jumlah</th>
+            <th data-lang="en">Category</th><th data-lang="id">Kategori</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="badge b-block">Blocker</span></td><td class="num">4</td><td data-lang="en">Number cannot be defended from data (missing CSV or fabricated label)</td><td data-lang="id">Angka tidak bisa dipertahankan dari data (CSV hilang atau label palsu)</td></tr>
+          <tr><td><span class="badge b-major">Major</span></td><td class="num">3</td><td data-lang="en">Number disagrees with authoritative CSV (internal inconsistency)</td><td data-lang="id">Angka tidak cocok dengan CSV otoritatif (inkonsistensi internal)</td></tr>
+          <tr><td><span class="badge b-minor">Minor</span></td><td class="num">5</td><td data-lang="en">Rounding or label issue (fixable by 1-word edit)</td><td data-lang="id">Isu rounding atau label (bisa diperbaiki dengan 1 kata)</td></tr>
+          <tr><td><span class="badge b-ok">OK</span></td><td class="num">15</td><td data-lang="en">Matches CSV (already verified)</td><td data-lang="id">Cocok CSV (sudah terverifikasi)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">🔴 Blocker Issues</h2>
+    <h2 data-lang="id">🔴 Isu Blocker</h2>
+
+    <h3><span class="badge b-block">B1</span> <span data-lang="en">Table 11 "Fixed 4" and "Fixed 6" rows — fabricated labels</span><span data-lang="id">Table 11 baris "Fixed 4" dan "Fixed 6" — label palsu</span></h3>
+    <p>
+      <b data-lang="en">Location:</b><b data-lang="id">Lokasi:</b>
+      <span data-lang="en">Section V.A, Table 11, lines 378–389.</span>
+      <span data-lang="id">Bagian V.A, Tabel 11, baris 378–389.</span>
+    </p>
+    <ul>
+      <li data-lang="en">Row "Fixed | 4" values (0.7181 / 0.8595 / 0.8073 / 0.7916) <b>exactly match Fixed PTW 5 s</b> in <code>benchmark_results_fixed.csv</code>. The CSV contains only PTW ∈ {2, 3, 5, 8, 10}; there is no row for PTW = 4.</li>
+      <li data-lang="id">Nilai baris "Fixed | 4" (0,7181 / 0,8595 / 0,8073 / 0,7916) <b>persis sama dengan Fixed PTW 5 s</b> di <code>benchmark_results_fixed.csv</code>. CSV hanya berisi PTW ∈ {2, 3, 5, 8, 10}; tidak ada baris untuk PTW = 4.</li>
+      <li data-lang="en">Row "Fixed | 6" shows only composite 0.7808 with per-period cells as "—". No CSV evidence.</li>
+      <li data-lang="id">Baris "Fixed | 6" hanya menampilkan nilai komposit 0,7808 dengan sel per-periode "—". Tidak ada bukti CSV.</li>
+    </ul>
+    <div class="callout warn">
+      <span class="ic">💡</span>
+      <div>
+        <b data-lang="en">Recommended fix:</b>
+        <b data-lang="id">Perbaikan yang disarankan:</b>
+        <ul>
+          <li data-lang="en">Change row "Fixed | 4" → "Fixed | <b>5</b>" (values are correct for 5 s).</li>
+          <li data-lang="id">Ubah baris "Fixed | 4" → "Fixed | <b>5</b>" (nilainya sudah benar untuk 5 s).</li>
+          <li data-lang="en">Delete row "Fixed | 6" entirely, OR regenerate actual 4 s and 6 s runs.</li>
+          <li data-lang="id">Hapus baris "Fixed | 6" seluruhnya, ATAU regenerasi run 4 s dan 6 s yang sebenarnya.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3><span class="badge b-block">B2</span> <span data-lang="en">Table 11 "IDA-PTW Operational" row — no CSV source</span><span data-lang="id">Table 11 baris "IDA-PTW Operational" — tanpa sumber CSV</span></h3>
+    <p data-lang="en">Claimed values: 0.6464 / 0.6252 / 0.6746 / 0.7531 / composite 0.7309. These numbers appear <b>only in the manuscript</b>; no CSV in <code>reports/</code> contains them.</p>
+    <p data-lang="id">Nilai yang diklaim: 0,6464 / 0,6252 / 0,6746 / 0,7531 / komposit 0,7309. Angka-angka ini hanya muncul <b>di manuskrip</b>; tidak ada CSV di <code>reports/</code> yang memuatnya.</p>
+
+    <h3><span class="badge b-block">B3</span> <span data-lang="en">Table 12 Post-P Full-Wave &amp; Total MiniSEED — no CSV artifact</span><span data-lang="id">Table 12 Post-P Full-Wave &amp; Total MiniSEED — tanpa artefak CSV</span></h3>
+    <p data-lang="en">Post-P Full-Wave Avg R² = <b>0.947</b>, Total MiniSEED = <b>0.957</b>. These values are quoted in <code>validation_evidence_report.md</code> as coming from "run c7a50193" and "run c3399cac" respectively — but <b>no CSV files for these runs exist in <code>reports/</code></b>. Only the scalar numbers are cited.</p>
+    <p data-lang="id">Post-P Full-Wave Avg R² = <b>0,947</b>, Total MiniSEED = <b>0,957</b>. Nilai ini dikutip di <code>validation_evidence_report.md</code> sebagai hasil "run c7a50193" dan "run c3399cac" — namun <b>tidak ada file CSV untuk run tersebut di <code>reports/</code></b>. Hanya angka skalar yang dikutip.</p>
+
+    <h3><span class="badge b-block">B4</span> <span data-lang="en">Abstract + Conclusion "composite R² = 0.731"</span><span data-lang="id">Abstract + Kesimpulan "composite R² = 0,731"</span></h3>
+    <p data-lang="en">Abstract and Table 17 quote "operational composite R² = 0.731" — this matches Table 11's "IDA-PTW Operational" composite 0.7309, which has no CSV provenance (see B2). Meanwhile <code>validation_evidence_report.md</code> quotes IDA-PTW Avg R² = 0.832 — a 10 p.p. difference.</p>
+    <p data-lang="id">Abstract dan Table 17 mengutip "operational composite R² = 0,731" — cocok dengan komposit "IDA-PTW Operational" 0,7309 di Table 11 yang tidak memiliki provenance CSV (lihat B2). Sementara itu <code>validation_evidence_report.md</code> mengutip IDA-PTW Avg R² = 0,832 — selisih 10 p.p.</p>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">🟠 Major Issues</h2>
+    <h2 data-lang="id">🟠 Isu Major</h2>
+
+    <h3><span class="badge b-major">M1</span> <span data-lang="en">Abstract N consistency</span><span data-lang="id">Konsistensi N di Abstract</span></h3>
+    <p data-lang="en">Claim is consistent throughout ("25,058 traces from 336 events") — but <code>intensity_correlation_metrics.csv</code> sums to <b>28,266</b> traces across 4 intensity bins. If this file underpins any per-intensity R² in the paper, the N is inflated.</p>
+    <p data-lang="id">Klaim konsisten di seluruh manuskrip ("25.058 trace dari 336 event") — namun <code>intensity_correlation_metrics.csv</code> berjumlah total <b>28.266</b> trace di 4 bin intensitas. Jika file ini menjadi dasar R² per-intensitas mana pun, N tersebut menggelembung.</p>
+
+    <h3><span class="badge b-major">M2</span> <span data-lang="en">Stage 1 "Damaging Recall = 91.09%" — no CSV confirmation</span><span data-lang="id">Stage 1 "Damaging Recall = 91,09%" — tanpa konfirmasi CSV</span></h3>
+    <p data-lang="en">91.09% recall is stated multiple times but no Stage 1 confusion matrix or classifier metrics CSV is found in <code>reports/</code>.</p>
+    <p data-lang="id">Recall 91,09% disebut beberapa kali namun tidak ditemukan matriks konfusi Stage 1 atau CSV metrik classifier di <code>reports/</code>.</p>
+
+    <h3><span class="badge b-major">M3</span> <span data-lang="en">Sigma decomposition Table 15 — no CSV source</span><span data-lang="id">Dekomposisi Sigma Table 15 — tanpa sumber CSV</span></h3>
+    <p data-lang="en">All τ, φ, σ_total values per period (0.324, 0.619, 0.698, etc.) are in the manuscript but <b>no sigma CSV is found</b>. This is the core Al Atik et al. [44] result.</p>
+    <p data-lang="id">Semua nilai τ, φ, σ_total per-periode (0,324, 0,619, 0,698, dll) ada di manuskrip namun <b>tidak ada CSV sigma</b>. Ini adalah hasil inti framework Al Atik et al. [44].</p>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">🟡 Minor Issues</h2>
+    <h2 data-lang="id">🟡 Isu Minor</h2>
+    <ul>
+      <li data-lang="en"><b>Table 9 "PTW Selection Distribution" N numbers don't sum to 25,058:</b> 24,027 + 14,452 + 26 = 38,505. Three labeled rows don't represent a partition of the dataset — likely a copy-paste error.</li>
+      <li data-lang="id"><b>N pada "PTW Selection Distribution" di Table 9 tidak berjumlah 25.058:</b> 24.027 + 14.452 + 26 = 38.505. Tiga baris berlabel tidak merepresentasikan partisi dataset — kemungkinan error copy-paste.</li>
+      <li data-lang="en"><b>Section III.C intensity class distribution shows 32,572 total:</b> ~30,540 + ~1,931 + ~101. Sum ≠ 25,058. Recompute class counts on the 25,058 dataset so they sum exactly.</li>
+      <li data-lang="id"><b>Distribusi kelas intensitas di Section III.C berjumlah 32.572:</b> ~30.540 + ~1.931 + ~101. Jumlah ≠ 25.058. Hitung ulang agar persis 25.058.</li>
+      <li data-lang="en"><b>Stage 0 AUC = 0.988</b> — consistent in abstract and Table 4 but no Stage 0 metrics CSV. Same kind of issue as M2.</li>
+      <li data-lang="id"><b>Stage 0 AUC = 0,988</b> — konsisten di abstract dan Table 4 namun tidak ada CSV metrik Stage 0. Isu sejenis dengan M2.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">🟢 Verified OK</h2>
+    <h2 data-lang="id">🟢 Terverifikasi OK</h2>
+    <p data-lang="en">The manuscript is <b>strongly supported by data for Evidence C (Saturation), Evidence D (P-arrival sensitivity), and the Fixed PTW benchmark</b> — these tables (13, 14, and parts of 11) exactly match their authoritative CSVs. These sections can be submitted as-is.</p>
+    <p data-lang="id">Manuskrip <b>didukung kuat oleh data untuk Evidence C (Saturation), Evidence D (P-arrival sensitivity), dan benchmark Fixed PTW</b> — tabel-tabel ini (13, 14, dan sebagian 11) persis cocok dengan CSV otoritatifnya. Seksi-seksi ini bisa dikirim apa adanya.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th data-lang="en">Manuscript claim</th><th data-lang="id">Klaim manuskrip</th><th data-lang="en">CSV source</th><th data-lang="id">Sumber CSV</th></tr></thead>
+        <tbody>
+          <tr><td data-lang="en">Fixed 2/3/5/8/10 s × 3 periods</td><td data-lang="id">Fixed 2/3/5/8/10 s × 3 periode</td><td class="mono">benchmark_results_fixed.csv</td></tr>
+          <tr><td data-lang="en">Saturation test @ 3 periods × 2 PTW</td><td data-lang="id">Uji saturasi @ 3 periode × 2 PTW</td><td class="mono">saturation_test_results.csv</td></tr>
+          <tr><td data-lang="en">P-arrival 7 shift values × 3 periods</td><td data-lang="id">P-arrival 7 nilai shift × 3 periode</td><td class="mono">p_arrival_sensitivity.csv</td></tr>
+          <tr><td data-lang="en">N = 1,204 saturation subset</td><td data-lang="id">N = 1.204 subset saturasi</td><td class="mono">saturation_test_results.csv</td></tr>
+          <tr><td data-lang="en">103 spectral periods T=0.051–10.0 s</td><td data-lang="id">103 periode spektral T=0,051–10,0 s</td><td class="mono" data-lang="en">dataset metadata</td><td class="mono" data-lang="id">metadata dataset</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p data-lang="en">The manuscript's <b>structural logic and reference list are excellent</b> (89 references, IEEE-complete, including the key Minson, Meier, Cremen &amp; Galasso, Dai et al. citations). No citation issues found.</p>
+    <p data-lang="id">Logika struktural dan daftar referensi manuskrip <b>sangat baik</b> (89 referensi, lengkap untuk format IEEE, termasuk sitasi kunci Minson, Meier, Cremen &amp; Galasso, Dai et al.). Tidak ada isu sitasi.</p>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="en">Priority Fix List for Publication-Readiness</h2>
+    <h2 data-lang="id">Daftar Prioritas Perbaikan untuk Kesiapan Publikasi</h2>
+    <ol>
+      <li data-lang="en"><b>[BLOCKER]</b> Resolve Table 11 "Fixed 4/6" labels — either rename or regenerate.</li>
+      <li data-lang="id"><b>[BLOCKER]</b> Selesaikan label "Fixed 4/6" pada Table 11 — rename atau regenerasi.</li>
+      <li data-lang="en"><b>[BLOCKER]</b> Produce CSV artifact for IDA-PTW end-to-end operational metrics (composite 0.7309 and per-period values).</li>
+      <li data-lang="id"><b>[BLOCKER]</b> Buat artefak CSV untuk metrik end-to-end operational IDA-PTW (komposit 0,7309 dan nilai per-periode).</li>
+      <li data-lang="en"><b>[BLOCKER]</b> Re-run or document the Full-Wave 341 s and Total MiniSEED 430 s experiments with CSV output.</li>
+      <li data-lang="id"><b>[BLOCKER]</b> Re-run atau dokumentasikan eksperimen Full-Wave 341 s dan Total MiniSEED 430 s dengan output CSV.</li>
+      <li data-lang="en"><b>[MAJOR]</b> Save Stage 0 URPD classifier metrics CSV (AUC, FAR, Recall at 3 operating points).</li>
+      <li data-lang="id"><b>[MAJOR]</b> Simpan CSV metrik classifier Stage 0 URPD (AUC, FAR, Recall pada 3 operating point).</li>
+      <li data-lang="en"><b>[MAJOR]</b> Save Stage 1 classifier metrics CSV (confusion matrix, per-class P/R/F1).</li>
+      <li data-lang="id"><b>[MAJOR]</b> Simpan CSV metrik classifier Stage 1 (matriks konfusi, P/R/F1 per-kelas).</li>
+      <li data-lang="en"><b>[MAJOR]</b> Save sigma decomposition CSV (Table 15 τ/φ/σ per period).</li>
+      <li data-lang="id"><b>[MAJOR]</b> Simpan CSV dekomposisi sigma (Table 15: τ/φ/σ per-periode).</li>
+      <li data-lang="en"><b>[MAJOR]</b> Reconcile intensity class distribution N (30,540 + 1,931 + 101 ≠ 25,058).</li>
+      <li data-lang="id"><b>[MAJOR]</b> Rekonsiliasi N distribusi kelas intensitas (30.540 + 1.931 + 101 ≠ 25.058).</li>
+      <li data-lang="en"><b>[MAJOR]</b> Reconcile Table 9 PTW distribution N (38,505 ≠ 25,058).</li>
+      <li data-lang="id"><b>[MAJOR]</b> Rekonsiliasi N distribusi PTW Table 9 (38.505 ≠ 25.058).</li>
+      <li data-lang="en"><b>[MINOR]</b> Resolve "end-to-end vs Stage-2-oracle" semantic consistently throughout the paper.</li>
+      <li data-lang="id"><b>[MINOR]</b> Selesaikan ambiguitas semantik "end-to-end vs Stage-2-oracle" secara konsisten di seluruh paper.</li>
+      <li data-lang="en"><b>[MINOR]</b> Add a <code>PROVENANCE.md</code> mapping every number in every table to its producing CSV.</li>
+      <li data-lang="id"><b>[MINOR]</b> Tambahkan <code>PROVENANCE.md</code> yang memetakan setiap angka di setiap tabel ke CSV produsennya.</li>
+    </ol>
+  </section>
+
+  <p class="small muted center"><span data-lang="en">Audit performed 2026-04-22 · Manuscript state 2026-04-19 · CSV state 2026-04-19.</span><span data-lang="id">Audit dilakukan 22-04-2026 · Status manuskrip 19-04-2026 · Status CSV 19-04-2026.</span></p>
+
+</main>
+
+<footer class="site">
+  <p>
+    <a href="index.html" data-lang="en">← Back to dashboard</a>
+    <a href="index.html" data-lang="id">← Kembali ke beranda</a>
+  </p>
+</footer>
+
+<script src="assets/js/i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+section,table,claim,value,source,status,notes
+Abstract,—,"25,058 three-component accelerograms","25,058",rosers_features_ptw3.csv (d1+gb3),✅ MATCH,"24,466 d1 + 592 gb3 = 25,058"
+Abstract,—,336 events across Java-Sunda,336,rosers_features_ptw3.csv (events=338),⚠ OFF BY 2,Actual 338 events
+Abstract,—,AUC = 0.988 (Stage 0 URPD),0.988,—,🔴 NO CSV,No Stage 0 implementation found
+Abstract,—,Stage 0 blind zone 38→11 km (human),11 km,—,🔴 NO DATA,No quantitative source
+Abstract,—,Stage 0 blind zone 38→4 km (infra),4 km,—,🔴 NO DATA,No quantitative source
+Abstract,—,Stage 1: 93.01% accuracy,93.01%,—,🔴 NO CSV,No Stage 1 classifier metrics CSV
+Abstract,—,Stage 1: Damaging Recall 91.09%,91.09%,—,🔴 NO CSV,Same
+Abstract,—,Stage 1.5: 99.87% routing fidelity,99.87%,—,🔴 NO CSV,No Stage 1.5 script/output found
+Abstract,—,Composite R² = 0.731 (operational),0.731,—,🔴 NO CSV,"RUN-C, no source file"
+Abstract,—,99.44% Golden Time Compliance,99.44%,—,🔴 NO CSV,"Latency calculation, no CSV"
+Abstract,—,"τ = 0.458, φ = 0.598, σ_total = 0.755",various,—,🔴 NO CSV,Sigma decomposition CSV missing
+Abstract,—,Within-factor 83.3% (±1.0 log10),83.3%,—,🔴 NO CSV,Same — sigma CSV needed
+Abstract,—,Cianjur/Sumedang 100% Damaging Recall,100%,—,🟡 NARR,"Case studies narrative, no CSV tabulating"
+III.C,Table 1,"Total Traces = 25,058","25,058",rosers_features_ptw3.csv,✅ MATCH,
+III.C,Table 1,Distinct events = 336,336,rosers (actual 338),⚠ OFF BY 2,
+III.C,Table 1,IA-BMKG stations = 125,125,metadata.csv,✅ MATCH,Confirmed via merge
+III.C,Table 1,Spectral periods = 103,103,metadata psa5_T_* cols,✅ MATCH,
+III.C,Table 1,Magnitude range Mw 1.7–6.2,1.7–6.2,metadata.csv source_magnitude,✅ MATCH,
+III.C,Table 1,Epicentral 5–560 km,5–560 km,metadata (0.7–299.9 km),🔴 WRONG,Both ends wrong; actual 0.7–299.9
+III.C,Table 1,Hypocentral depth 2–210 km,2–210 km,metadata,⚠ NOT VERIFIED,Not checked
+III.C,Table 1,PGA 1.66e-7 to 6.00 gal,6.00 gal max,metadata (1.66e-7 to 1.66 in d1),⚠ PARTIAL,Max depends on gb3 injection
+III.C,Table 1,Median distance ~109 km,109 km,metadata (actual 121.9 km median d1),⚠ OFF,Actual median 121.9
+III.C,Table 1,Mean post-P duration ~341 s,341 s,—,🟡 UNCHECKED,No script output for this
+III.C,Intensity table,"Weak ~30,540 (94.0%)","30,540",—,🔴 FABRICATED,"Sum ≠ 25,058; actual dist differs dramatically"
+III.C,Intensity table,"Felt/Strong ~1,931 (5.7%)","1,931",—,🔴 FABRICATED,Same
+III.C,Intensity table,Damaging ~101 (0.3%),101,—,🔴 FABRICATED,Same. gb3=592 all-damaging
+IV.B,Table 4,"Conservative threshold 0.986, Recall 82%",82%,—,🔴 NO CSV,No Stage 0 implementation
+IV.B,Table 4,"Balanced threshold 0.157, Recall 100%",100%,—,🔴 NO CSV,Same
+IV.B,Table 4,AUC = 0.988,0.988,—,🔴 NO CSV,No implementation to verify
+IV.C,Table 7,Overall Accuracy 93.01%,93.01%,—,🔴 NO CSV,No Stage 1 script found
+IV.C,Table 7,F1 weighted 0.934,0.934,—,🔴 NO CSV,Same
+IV.C,Table 7,Damaging Recall 91.09%,91.09%,—,🔴 NO CSV,Same
+IV.C,Table 7,Critical Miss Rate 8.91%,8.91%,—,🔴 NO CSV,"Derived, needs confirmation"
+IV.D,Table 8,C2 operational composite R² 0.657,0.657,—,🔴 NO CSV,No Stage 1.5 output found
+IV.D,Table 8,Routing fidelity 99.87%,99.87%,—,🔴 NO CSV,Same
+V.A,Table 11,Fixed 2s Sa(0.3s) = 0.8487,0.8487,benchmark_results_fixed.csv,✅ MATCH,
+V.A,Table 11,Fixed 3s Sa(0.3s) = 0.8532,0.8532,benchmark_results_fixed.csv,✅ MATCH,
+V.A,Table 11,Fixed '4s' Sa(0.3s) = 0.8595,0.8595,actually PTW=5 in CSV,🔴 MISLABEL,Row labeled '4' matches CSV PTW=5
+V.A,Table 11,Fixed '6s' composite 0.7808,0.7808,—,🔴 NO CSV,No PTW=6 row exists
+V.A,Table 11,Fixed 8s Sa(0.3s) = 0.8643,0.8643,benchmark_results_fixed.csv,✅ MATCH,
+V.A,Table 11,IDA-PTW Operational composite 0.7309,0.7309,—,🔴 NO CSV,RUN-C orphan
+V.A,Table 11,IDA-PTW Operational Sa(0.3s) = 0.6252,0.6252,—,🔴 NO CSV,No source
+V.A,Table 11,IDA-PTW Oracle composite 0.7311,0.7311,—,🔴 NO CSV,No source
+V.B,Table 12,IDA-PTW e2e Avg 0.731,0.731,—,🔴 NO CSV,RUN-C
+V.B,Table 12,Fixed-8s Avg 0.786,0.786,benchmark_results_fixed.csv,⚠ CLOSE,Actual computed: 0.825
+V.B,Table 12,Post-P Full-Wave Avg 0.947,0.947,—,🔴 NO CSV,Legacy run c7a50193
+V.B,Table 12,Total MiniSEED Avg 0.957,0.957,—,🔴 NO CSV,Legacy run c3399cac
+V.B,Table 12,Δ pre-P noise +0.94%,+0.94%,—,🔴 NO CSV,Derived from missing sources
+V.C,Table 13,Fixed-3s Sa(1.0s) = 0.6454 (high-PGA),0.6454,saturation_test_results.csv,✅ MATCH,
+V.C,Table 13,Fixed-15s Sa(1.0s) = 0.7198,0.7198,saturation_test_results.csv,✅ MATCH,
+V.C,Table 13,Sa(3.0s) improvement +6.59%,+6.59%,saturation_test_results.csv,✅ COMPUTE,Derived correctly
+V.C,Table 13,Sa(5.0s) improvement +6.88%,+6.88%,saturation_test_results.csv,✅ COMPUTE,
+V.C,Table 13,"N = 1,204 (PGA ≥ 0.1 gal)","1,204","d1 dataset (actual 1,046)",⚠ OFF,"Need gb3 to verify 1,204"
+V.C,Table 13,Wilcoxon p < 0.001,p<0.001,—,🟡 NO CSV,Wilcoxon result not stored
+V.D,Table 14,Shift 0.0s Sa(0.3s) = 0.8670,0.8670,p_arrival_sensitivity.csv,✅ MATCH,
+V.D,Table 14,Shift ±2s ΔR² = −0.0045,−0.0045,p_arrival_sensitivity.csv,✅ COMPUTE,
+V.D,Table 14,All 7 shift values,—,p_arrival_sensitivity.csv,✅ FULL MATCH,
+V.E,Table 15,τ=0.458 (mean),0.458,—,🔴 NO CSV,No sigma CSV
+V.E,Table 15,φ=0.598 (mean),0.598,—,🔴 NO CSV,Same
+V.E,Table 15,σ_total=0.755,0.755,—,🔴 NO CSV,Same
+V.E,Table 15,Within ±0.5 = 54.4%,54.4%,—,🔴 NO CSV,Same
+V.E,Table 15,Within ±1.0 = 83.3%,83.3%,—,🔴 NO CSV,Same
+V.E,Table 15,φ²/σ² = 62.8%,62.8%,—,🔴 NO CSV,Derived
+VII,Table 17,All summary numbers,—,various,⚠ MIXED,Inherits all above issues
